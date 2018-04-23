@@ -1,0 +1,76 @@
+# Reference main.py
+#: import main main
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
+
+StudentDB:
+
+<StudentDB>:
+    orientation: "vertical"
+    first_name_text_input: first_name
+    last_name_text_input: last_name
+    school_name_text_input: spinner_id
+    subject_name_text_input: spinner_id2
+    student_list: students_list_view
+    padding: 10
+    spacing: 10
+
+    BoxLayout:
+        size_hint_y: None
+        height: "40dp"
+
+        Label:
+            text: "First Name"
+        TextInput:
+            id: first_name
+        Label:
+            text: "Last Name"
+        TextInput:
+            id: last_name
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint_y: None
+        height: "40dp"
+
+        Spinner:
+            text: "Select School"
+            values: ["MHS","KHS","THS","DHS"]
+            id: spinner_id
+            on_text: root.spinner_clicked(spinner_id.text)
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint_y: None
+        height: "40dp"
+
+        Spinner:
+            text: "Select Subject"
+            values: ["Agriculture Shop", "Agronomy", "Communications","Electricity","Entomology","Environmental/Natural Resources","Farm Business Management","Floriculture","Land Judging","Livestock Evaluation Junior","Livestock Evaluation Senior","Meats","Milk Quality and Products","Nursery and Landscape","Quiz Bowl","Rangeland Judging","Soil and Water Conservation","Veterinary Science"]
+            id: spinner_id2
+            on_text: root.spinner_clicked(spinner_id2.text)
+
+
+    BoxLayout:
+        size_hint_y: None
+        height: "40dp"
+        Button:
+            text: "Submit"
+            size_hint_x: 15
+            on_press: root.submit_student()
+        Button:
+            text: "Delete"
+            size_hint_x: 15
+            on_press: root.delete_student()
+        Button:
+            text: "Replace"
+            size_hint_x: 15
+            on_press: root.replace_student()
+
+    # Define starting data and point to the ListItemButton
+    # in the Python code
+    ListView:
+
+        height: 50
+        id: students_list_view
+        color: 0, 0, 1, 0
+        adapter:
+            ListAdapter(data=[], cls=main.StudentListButton)
