@@ -34,7 +34,7 @@ StudentDB:
 
         Spinner:
             text: "Select School"
-            values: ["MHS","KHS","THS","DHS"]
+            values: ["Achille High School","Afton High School","Agra High School","Alex High School","Allen High School","Amber Pocasset High","Anadarko High School","Antlers High School","Asher High School","Atlus High School","Atoka High School","Battiest High School","Bennington High School","Bethel High School","Big Pasture High School","Binger Oney High School","Blackwell High School","Blanchard High School","Bokoshe High School","Boone Apache High","Boswell High School","Bowlegs High School","Bray High School","Broken Bow High School","Buffalo Valley High School","Butner High School","Byng High School","Cache High School","Caddo High School","Calera High School","Calvin High School","Cameron High School","Canadian High School","Caney High School","Carney High School","Cement High School","Central High School","Chandler High School","Chattanooga High School","Chelsea High School","Chickasha High School","Chisam High School","Clayton High School","Clinton High School","Coalgate High School","Colbert High School","Comanche High School","Covington Douglas High School","Coweta High School","Crowder High School","Cushing High School","Cyril High School","Dale High School","Davenport High School","Davis High School","Dibble High School","Dickson High School","Drumright High School","Duke High School","Durant High School","Dustin High School","Eagletown High School","Edmond High School","Eisenhower High School","El Reno High School","Elgin High School","Elmore City High School","Empire High School","Fletcher High School","Fort Cobb High School","Fort Towson","Fox High School","Frederick High School","Gans High School","Geary High School","Geronimo High School","Glencoe High School","Grandfield High School","Granite High School","Grant High School","Grove High School","Haileyville High School","Hartshorne High School","Haworth High School","Heavener High School","Hinton High School","Holdenville High School","Holdenville High School","Howe High School","Hugo High School","Idabel High School","Indianola High School","Indihoma High School","Jenks High School","Kellyville High School","Keota High School","Kingfisher High School","Kingston High School","Kinta High School","Kiowa High School","Konawa High School","Latta High School","Lawton High School","LeFlore High School","Lexington High School","Lindsay High School","Lone Grove High School","Luther High School","MacArthur High School","Macomb High School","Madill High School","Mangum High School","Marietta High School","Marlow High School","Maysville High School","McAlester High School","McCloud High School","Meeker High School","Merritt High School","Milburn High School","Minco High School","Moore High School","Morris High School","Moss High School","Moss High School","Mt. View Gotebo High","Navajo High School","Newcastle High School","Ninnekah High School","Noble High School","Norman High School","Paden High School","Panama High School","Panola High School","Paoli High School","Pauls Valley High School","Pawnee High School","Perkins Tryon High School","Poteau High School","Prague High School","Purcell High School","Quinton High School","Rattan High School","Red Oak High School","Ringling High School","Ripley High School","Rock Creek High School","Roff High School","Roff High School","Rush Springs High School","Ryan High School","Sasakwa High School","Savanna High School","Shawnee High school","Silo High School","Skiatook High School","Smithville High School","Soper High School","Spiro High School","Springer High School","Sterling High School","Stigler High School","Stillwater High School","Stonewall High School","Stratford High School","Stringtown High School","Strother High School","Stuart High School","Sulphur High School","Talihina High School","Tecumseh High School","Temple High School","Thackerville High School","Thomas Fay Custer High","Tishomingo High School","Tupelo High School","Turner High School","Tushka High School","Tuttle High School","Union City High School","Valliant High School","Vanoss High School","Velma Alma High School","Verden High School","Walters High School","Wanette High School","Wapanucka High School","Washington High School","Waurika High School","Wayne High School","Webber Falls High School","Weleetka High School","Welston High School","Wetumka High School","Wewoka High School","Whitesboro High School","Wilburton High School","Wilson High School","Wister High School","Wright City High School","Wynnewood High School","Yukon High School"]
             id: spinner_id
             on_text: root.spinner_clicked(spinner_id.text)
     BoxLayout:
@@ -53,8 +53,9 @@ StudentDB:
         size_hint_y: None
         height: "40dp"
         Button:
+            color: 0, 1, 0
             text: "Submit"
-            size_hint_x: 15
+            size_hint_x: 11
             on_press: root.submit_student()
         Button:
             text: "Delete"
@@ -64,13 +65,23 @@ StudentDB:
             text: "Replace"
             size_hint_x: 15
             on_press: root.replace_student()
+        Button:
+            text: "Load"
+            size_hint_x: 10
+            on_press: root.load_students()
+        Button:
+            text: "Print CSV"
+            size_hint_x: 15
+            on_press: root.print_csv()
 
     # Define starting data and point to the ListItemButton
     # in the Python code
     ListView:
 
-        height: 50
+        height: "60dp"
+        pad_y: "60dp"
+        text_size:
         id: students_list_view
-        color: 0, 0, 1, 0
-        adapter:
+		adapter:
             ListAdapter(data=[], cls=main.StudentListButton)
+		color: 0, 0, 0, 1
