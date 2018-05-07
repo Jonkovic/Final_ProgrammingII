@@ -1,3 +1,3 @@
-title=studentdb
-author=JosephMedlen
+title=Student Database
+author=Joseph Medlen
 orientation=all
